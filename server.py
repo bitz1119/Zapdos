@@ -1,7 +1,12 @@
 from socketIO_client import SocketIO
 import json
 import random
+
+THRESHOLD = 20
+
 def on_connect(): # Function to prompt on server connection
+	
+	should_be_send()
 	print('connected to server')
 
 def on_disconnect(): # Funtion to prompt on disconnection from server
@@ -9,7 +14,7 @@ def on_disconnect(): # Funtion to prompt on disconnection from server
 
 
 def find_speed():
-	return random.random()*10
+	return random.random()*100
 
 def get_current_cordinate():
 	return random.random(),random.random()
@@ -22,6 +27,7 @@ def find_alcohol_level():
 
 def on_overspeed():
 	x = find_speed()
+	# print(x, THRESHOLD)
 	if x >= THRESHOLD:
 		return x
 	else :
@@ -34,6 +40,7 @@ def on_alcohol():
 
 def should_be_send():
 	speed = on_overspeed();
+	print("Inside overspeeding", speed)
 	if speed != 0 :
 		dis = {}
 		dis['speed'] = speed
@@ -42,9 +49,9 @@ def should_be_send():
 		dis['longitude'] = longi
 		dis['on_alcohol'] = on_alcohol()
 		dis = json.dumps(dis)
-		socketIO.emit('overspeading',dis)
-		show_alert_to_user()	
-
+		print('dis')
+		socketIO.emit('overspeeding',dis)
+		# show_alert_to_user()	
 
 
 
@@ -52,7 +59,9 @@ def should_be_send():
 
 socketIO = SocketIO('localhost', 3000)
 socketIO.on('connect', on_connect)
-while(1):
-	should_be_send()
+# socketIO.wait()
+print('After connect')
+# while(1):
+# 	should_be_send()
 socketIO.on('disconnect', on_disconnect)
 socketIO.wait()
