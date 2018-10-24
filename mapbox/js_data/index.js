@@ -30,7 +30,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/singhsanket143/Zapdos/master/ma
     dragmode: 'zoom',
     mapbox: {
       center: {
-        lat: 25.42,
+        lat: 25.42 ,
         lon: 81.56
       },
       domain: {
@@ -38,7 +38,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/singhsanket143/Zapdos/master/ma
         y: [0, 1]
       },
       style: 'dark',
-      zoom: 9
+      zoom: 12
     },
     margin: {
       r: 20,
