@@ -10,7 +10,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/singhsanket143/Zapdos/master/ma
 
   var data = classes.map(function(classes) {
     var rowsFiltered = rows.filter(function(row) {
-        return (row.crime === classes);
+        return (row.problem === classes);
     });
     return {
        type: 'scattermapbox',
