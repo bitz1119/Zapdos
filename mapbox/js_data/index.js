@@ -1,6 +1,6 @@
-Plotly.d3.csv('https://raw.githubusercontent.com/rishab-sharma/hint_repo/master/60_labels.csv', function(err, rows){
+Plotly.d3.csv('https://raw.githubusercontent.com/singhsanket143/Zapdos/master/mapbox/dataset.csv', function(err, rows){
 
-  var classArray = unpack(rows, 'crime');
+  var classArray = unpack(rows, 'problem');
   var classes = [...new Set(classArray)];
   console.log(classes);
   console.log(classArray);
@@ -23,7 +23,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/rishab-sharma/hint_repo/master/
   console.log(rows);
 
   var layout = {
-	 title: 'Crime Mapping',
+	 title: 'Problem Mapping',
 	 font: {
 		 color: 'white'
 	 },
@@ -55,7 +55,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/rishab-sharma/hint_repo/master/
        y: 0,
        xref: 'paper',
        yref: 'paper',
-		 text: 'CRIME MAPPING',
+		 text: 'Problem Mapping',
 		 showarrow: false
 	 }]
   };
