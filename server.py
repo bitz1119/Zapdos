@@ -4,6 +4,8 @@ def on_connect(): # Function to prompt on server connection
 
 def on_disconnect(): # Funtion to prompt on disconnection from server
 	print('disconnected from server')
+def on_overspeed():
+	print('')
 
 
 
