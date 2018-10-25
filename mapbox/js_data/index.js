@@ -21,7 +21,6 @@ Plotly.d3.csv('https://raw.githubusercontent.com/singhsanket143/Zapdos/master/ma
     };
   });
   console.log(data);
-  // console.log(rows);
 
   var layout = {
 	 title: 'Problem Mapping',
