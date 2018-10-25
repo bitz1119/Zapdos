@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request , session , Response
 import flask , os
 import pandas as pd
@@ -16,9 +17,20 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 app.config['CORS_ALLOW_HEADERS'] = ( 'accept','accept-encoding','authorization','content-type','dnt','origin','user-agent','x-csrftoken','x-requested-with')
 app.config["CORS_SUPPORTS_CREDENTIALS"] = True
 
+@app.route('/',methods=['GET','POST'])
+def index():
+   return render_template('index2.html')
+
+
 @app.route('/route_map',methods=['GET','POST'])
 def route_map():
    return render_template('route.html')
+
+
+@app.route('/data',methods=['GET','POST'])
+def data():
+   return render_template('data.html')
+
 
 
 @app.route('/route',methods=['GET','POST'])
