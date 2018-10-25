@@ -1,3 +1,5 @@
+var data_Speeding_crime = 0 ;
+
 Plotly.d3.csv('https://raw.githubusercontent.com/singhsanket143/Zapdos/master/mapbox/dataset.csv', function(err, rows){
 
   var classArray = unpack(rows, 'problem');
@@ -116,39 +118,78 @@ Plotly.d3.csv('https://raw.githubusercontent.com/singhsanket143/Zapdos/master/ma
 
 
 
-
+  var abc = Plotly ;
 
 
    Plotly.d3.csv('https://raw.githubusercontent.com/singhsanket143/Zapdos/master/mapbox/spped.csv',  function(err2, rows_new){
 
-    var classArray_new = unpack_new(rows_new, 'problem');
-    var classes_new = [...new Set(classArray_new)];
 
-    function unpack_new(rows_new, key) {
-      return rows_new.map(function(row) { return row[key]; });
-    }
 
-    var data_new = classes_new.map(function(classes_new) {
-      var rowsFiltered = rows_new.filter(function(row) {
-          return (row.problem === classes_new);
-      });
-      return {
-         type: 'scattermapbox',
-         name: classes_new,
-         lat: unpack_new(rowsFiltered, 'Latitude'),
-         lon: unpack_new(rowsFiltered, 'Longitude')
-      };
-    });
+           var classArray_new = unpack_new(rows_new, 'problem');
+           var classes_new = [...new Set(classArray_new)];
 
-    console.log(data_new);
+           function unpack_new(rows_new, key) {
+             return rows_new.map(function(row) { return row[key]; });
+           }
 
-    Plotly.plot('graphDiv', data_new, layout_2);
+           var data_new = classes_new.map(function(classes_new) {
+             var rowsFiltered = rows_new.filter(function(row) {
+                 return (row.problem === classes_new);
+             });
+             return {
+                type: 'scattermapbox',
+                name: classes_new,
+                lat: unpack_new(rowsFiltered, 'Latitude'),
+                lon: unpack_new(rowsFiltered, 'Longitude')
+             };
+           });
+
+
+
+
+    var c = 0;
+
+    var counter = 0;
+
+    var refresh = setInterval(function() {
+
+      if(!(c==0)) {
+        abc.deleteTraces('graphDiv' , [-2 , -1]) ;
+        c=1;
+      }
+      console.log(data_new);
+      console.log(counter, counter+4, data_new.length);
+      if(counter+4>=data_new.length) {
+        clearInterval(refresh);
+      }
+      window['data_Speeding_crime'] = data_new ;
+
+      abc.plot('graphDiv', data_new.slice(counter, counter+4) , layout) ;
+      counter = counter+4;
+
+
+    }, 1000);
+
+
+    // console.log(data_new);
+
+
+
+
 
 
 
   });
 
 
+
+
+
+
+
+
+
+  // Plotly.plot('graphDiv', data_Speeding_crime , layout);
 
 
 
