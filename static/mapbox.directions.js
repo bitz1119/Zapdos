@@ -2283,6 +2283,7 @@ module.exports = function(url, callback) {
             };
             xhttp.open("POST", "http://0.0.0.0:5000/route", true);
             xhttp.setRequestHeader("Content-type", "application/json");
+            // xhttp.setRequestHeader("origins", "*");
 
             console.log((resp));
             xhttp.send(JSON.stringify(resp));
