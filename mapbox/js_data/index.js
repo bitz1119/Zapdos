@@ -40,7 +40,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/singhsanket143/Zapdos/master/ma
         y: [0, 1]
       },
       style: 'dark',
-      zoom: 12
+      zoom: 5
     },
     margin: {
       r: 20,
@@ -84,7 +84,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/singhsanket143/Zapdos/master/ma
           y: [0, 1]
         },
         style: 'dark',
-        zoom: 12
+        zoom: 5
       },
       margin: {
         r: 20,
@@ -114,35 +114,35 @@ Plotly.d3.csv('https://raw.githubusercontent.com/singhsanket143/Zapdos/master/ma
     mapboxAccessToken: 'pk.eyJ1IjoicmlzaGFiLXNoYXJtYSIsImEiOiJjamVsNnh5N3QxZXcwMzNudWJ4YWM4eTJiIn0.eBysOBBUyW6GZvYCTLDSgQ'
   });
 
-  Plotly.plot('graphDiv', data, layout);
+  // Plotly.plot('graphDiv', data, layout);
 
 
 
   var abc = Plotly ;
 
 
-   Plotly.d3.csv('https://raw.githubusercontent.com/singhsanket143/Zapdos/master/mapbox/spped.csv',  function(err2, rows_new){
+   Plotly.d3.csv('https://raw.githubusercontent.com/singhsanket143/Zapdos/master/mapbox/speed.csv',  function(err2, rows_new){
 
 
-
-           var classArray_new = unpack_new(rows_new, 'problem');
-           var classes_new = [...new Set(classArray_new)];
-
-           function unpack_new(rows_new, key) {
-             return rows_new.map(function(row) { return row[key]; });
-           }
-
-           var data_new = classes_new.map(function(classes_new) {
-             var rowsFiltered = rows_new.filter(function(row) {
-                 return (row.problem === classes_new);
-             });
-             return {
-                type: 'scattermapbox',
-                name: classes_new,
-                lat: unpack_new(rowsFiltered, 'Latitude'),
-                lon: unpack_new(rowsFiltered, 'Longitude')
-             };
-           });
+           console.log(rows_new);
+           // var classArray_new = unpack_new(rows_new, 'problem');
+           // var classes_new = [...new Set(classArray_new)];
+           //
+           // function unpack_new(rows_new, key) {
+           //   return rows_new.map(function(row) { return row[key]; });
+           // }
+           //
+           // var data_new = classes_new.map(function(classes_new) {
+           //   var rowsFiltered = rows_new.filter(function(row) {
+           //       return (row.problem === classes_new);
+           //   });
+           //   return {
+           //      type: 'scattermapbox',
+           //      name: classes_new,
+           //      lat: unpack_new(rowsFiltered, 'Latitude'),
+           //      lon: unpack_new(rowsFiltered, 'Longitude')
+           //   };
+           // });
 
 
 
@@ -164,7 +164,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/singhsanket143/Zapdos/master/ma
       }
       window['data_Speeding_crime'] = data_new ;
 
-      abc.plot('graphDiv', data_new.slice(counter, counter+4) , layout) ;
+      abc.plot('graphDiv', raw_data , layout) ;
       counter = counter+4;
 
 
