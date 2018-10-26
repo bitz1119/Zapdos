@@ -5,9 +5,9 @@ import random
 THRESHOLD = 20
 
 def on_connect(): # Function to prompt on server connection
-	
-	should_be_send()
 	print('connected to server')
+	while(1)
+		should_be_send()
 
 def on_disconnect(): # Funtion to prompt on disconnection from server
 	print('disconnected from server')
